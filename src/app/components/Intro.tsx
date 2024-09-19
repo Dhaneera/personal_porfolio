@@ -1,0 +1,94 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable jsx-a11y/alt-text */
+"use client"
+import React from 'react'
+import boy from '@/app/images/Boy from Personal Portfolio.png'
+import Image from 'next/image'
+import Link from 'next/link'
+import { BsLinkedin } from "react-icons/bs";
+import { FaGithubSquare } from 'react-icons/fa';
+import { Mail } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Fade } from "react-awesome-reveal"
+
+export default function Intro() {
+    return (
+        <section id="home" className=' mb-20 max-w-[75rem] text-center sm:mb-0'>
+            <div className=' flex items-center justify-center'>
+                <div className=' relative'>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 125,
+                            damping: 10,
+                            duration: 0.2
+                        }}
+                    >
+                        <Image
+                            src={boy}
+                            width="480"
+                            height="480"
+                            alt='boy runnig to you'
+                            quality="100"
+                            priority={true}
+                            className='rounded-full shadow-xl object-cover'
+                        />
+                    </motion.div>
+                    <motion.span
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 125,
+                            damping: 10,
+                            duration: 0.2
+                        }}
+                        className='text-6xl absolute bottom-6 right-12 '>👋</motion.span>
+                </div>
+            </div>
+            <Fade direction='up' delay={400} cascade damping={1e-1}
+                triggerOnce={true}
+            >
+            <h1 className=' mb-10 mt-4 text-2xl sm:text-4xl'>
+                <span className=' font-medium !leading-[1.5]'>Grow your business with a new website</span>{""}
+                <p className=" text-[14px]">
+                    Frontend is a full-service creative studio
+                    creating beautiful digital exeperiences and products.
+                </p>
+            </h1>
+            </Fade>
+            <motion.div className=' flex sm:flex-row items-center justify-center gap-4
+        px-4 text-lg font-medium '
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+            >
+                <Link href="#"
+                    className=' group bg-gray-900 text-white px-7
+            py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110
+            hover:scale-110 hover:bg-gray-950 dark:bg-white/10
+            active:scale-105 transition'>
+                    Connect <Mail color={'#9ca3af'} />
+                </Link>
+                <a className='bg-gray-900 p-4 text-white flex items-center
+            gap rounded-full focus:scale-[1.15] hover:scale-[1.15]
+            active:scale-105 transition cursor-pointer border-black
+            dark:bg-white/10 dark:text-white/60'
+                    href='#'
+                    target='_blank'>
+                    <BsLinkedin />
+                </a>
+                <a className='bg-gray-900 p-4 text-white flex items-center
+            gap rounded-full focus:scale-[1.15] hover:scale-[1.15]
+            active:scale-105 transition cursor-pointer border-black
+            dark:bg-white/10 dark:text-white/60'
+                    href='#'
+                    target='_blank'>
+                    <FaGithubSquare />
+                </a>
+            </motion.div>
+        </section>
+    )
+}
