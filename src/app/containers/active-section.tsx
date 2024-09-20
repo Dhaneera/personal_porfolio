@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
-import { SectionName } from "../components/lib/types";
+import { SectionName } from "../lib/types";
 import React, { useState, createContext, useContext } from "react";
 
 type ActiveSectionContextProviderProps = {

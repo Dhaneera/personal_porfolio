@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext} from "../../containers/active-section";
+import { useActiveSectionContext} from "../containers/active-section";
 import type { SectionName } from "./types";
 
 export function useSectionInView(sectionName:SectionName,threshold=0.75) {

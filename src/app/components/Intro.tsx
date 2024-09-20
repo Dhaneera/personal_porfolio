@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable jsx-a11y/alt-text */
 "use client"
 import React from 'react'
 import boy from '@/app/images/Boy from Personal Portfolio.png'
@@ -10,11 +8,12 @@ import { FaGithubSquare } from 'react-icons/fa';
 import { Mail } from 'lucide-react';
 import { motion } from "framer-motion";
 import { Fade } from "react-awesome-reveal"
-import { useSectionInView } from "./lib/UseInView";
+import { useSectionInView } from "../lib/UseInView";
 import { useActiveSectionContext } from '../containers/active-section'
 
 export default function Intro() {
     const {ref} = useSectionInView("#home",0.5)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {setActiveSection,setTimeOfLastClick}=useActiveSectionContext();
     return (
         <section
