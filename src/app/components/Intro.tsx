@@ -10,10 +10,17 @@ import { FaGithubSquare } from 'react-icons/fa';
 import { Mail } from 'lucide-react';
 import { motion } from "framer-motion";
 import { Fade } from "react-awesome-reveal"
+import { useSectionInView } from "./lib/UseInView";
+import { useActiveSectionContext } from '../containers/active-section'
 
 export default function Intro() {
+    const {ref} = useSectionInView("#home",0.5)
+    const {setActiveSection,setTimeOfLastClick}=useActiveSectionContext();
     return (
-        <section id="home" className=' mb-20 max-w-[75rem] text-center sm:mb-0'>
+        <section
+        ref={ref}
+        id="home"
+        className=' mb-20 max-w-[75rem] text-center sm:mb-0'>
             <div className=' flex items-center justify-center'>
                 <div className=' relative'>
                     <motion.div
