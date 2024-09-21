@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import React from "react"
@@ -14,7 +15,7 @@ export default function Header({ links }: HeaderProps) {
         justify-center fixed z-[999] w-full mt-4">
             <div>
                 <ul>
-                    {links.map((link) => {
+                    {links.map((link) => (
                         <li>
                             <NextLink
                                 href={link.hash}
@@ -22,7 +23,7 @@ export default function Header({ links }: HeaderProps) {
                                 {link.nameEng}
                             </NextLink>
                         </li>
-                    })}
+                    ))}
                 </ul>
             </div>
         </header>
