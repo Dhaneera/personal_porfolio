@@ -16,17 +16,17 @@ import { start } from "repl";
 type HamburgerMenuProps = { links: Link[] };
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ links }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const { setActiveSection, setIsActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+    const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
     const menuTrigger ={
-        visible:{ scale: 1, opacitiy: 0.7, y: 0},
+        visible:{ scale: 1, opacity: 0.7, y: 0},
         tap :{ scale: 0.85},
         hover:{ scale: 1.2},
     }
 
     const menuList ={
-        start:{ scale: 0.6, opacitiy: 0.7, y: -20},
-        visible:{ scale: 1, opacitiy: 1, y: 0},
+        start :{ scale: 0.6, opacity: 0.7, y: -20 },
+        visible:{ scale: 1, opacity: 0.9, y: 0 },
     }
 
 
@@ -49,6 +49,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ links }) => {
                 {isOpen &&
                 <motion.div
                 variants={menuList}
+                initial="start"
                 animate="visible"
                  className=" w-full bg-white drop-shadow border border-slate-400
                 dark:border-white border-opacity-60 shadow-2xl flex flex-col
