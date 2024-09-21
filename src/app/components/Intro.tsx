@@ -12,14 +12,14 @@ import { useSectionInView } from "../lib/UseInView";
 import { useActiveSectionContext } from '../containers/active-section'
 
 export default function Intro() {
-    const {ref} = useSectionInView("#home",0.5)
+    const { ref } = useSectionInView("#home", 0.5)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {setActiveSection,setTimeOfLastClick}=useActiveSectionContext();
+    const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     return (
         <section
-        ref={ref}
-        id="home"
-        className=' mb-20 max-w-[75rem] text-center sm:mb-0'>
+            ref={ref}
+            id="home"
+            className=' mb-20 max-w-[75rem] text-center sm:mb-0'>
             <div className=' flex items-center justify-center'>
                 <div className=' relative'>
                     <motion.div
@@ -57,13 +57,13 @@ export default function Intro() {
             <Fade direction='up' delay={400} cascade damping={1e-1}
                 triggerOnce={true}
             >
-            <h1 className=' mb-10 mt-4 text-2xl sm:text-4xl'>
-                <span className=' font-medium !leading-[1.5]'>Grow your business with a new website</span>{""}
-                <p className=" text-[14px]">
-                    Frontend is a full-service creative studio
-                    creating beautiful digital exeperiences and products.
-                </p>
-            </h1>
+                <h1 className=' mb-10 mt-4 text-2xl sm:text-4xl'>
+                    <span className=' font-medium !leading-[1.5]'>Grow your business with a new website</span>{""}
+                    <p className=" text-[14px]">
+                        Frontend is a full-service creative studio
+                        creating beautiful digital exeperiences and products.
+                    </p>
+                </h1>
             </Fade>
             <motion.div className=' flex sm:flex-row items-center justify-center gap-4
         px-4 text-lg font-medium '

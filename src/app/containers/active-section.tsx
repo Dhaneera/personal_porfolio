@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import { SectionName } from "../lib/types";
 import React, { useState, createContext, useContext } from "react";
@@ -17,10 +16,10 @@ export const ActiveSectionContext =
     createContext<ActiveSectionContextType | null>(null);
 export default function ActiveSectionContextProvider({
     children,
-}:ActiveSectionContextProviderProps) {
-    const [activeSection,setActiveSection] = useState<SectionName>("#home");
+}: ActiveSectionContextProviderProps) {
+    const [activeSection, setActiveSection] = useState<SectionName>("#home");
     const [timeOfLastClick, setTimeOfLastClick] = useState<number>(0);
-    return(
+    return (
         <ActiveSectionContext.Provider value={{
             activeSection,
             setActiveSection,

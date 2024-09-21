@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/jsx-key */
 "use client"
 import React, { useState } from "react"
 import { Link } from "../lib/types";
@@ -8,25 +6,22 @@ import NextLink from "next/link"
 import Hamburger from "hamburger-react";
 import { useActiveSectionContext } from "../containers/active-section";
 import { AnimatePresence, motion } from "framer-motion";
-import { link } from "fs";
-import { Scale } from "lucide-react";
-import { tap } from "node:test/reporters";
-import { start } from "repl";
+
 
 type HamburgerMenuProps = { links: Link[] };
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ links }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
-    const menuTrigger ={
-        visible:{ scale: 1, opacity: 0.7, y: 0},
-        tap :{ scale: 0.85},
-        hover:{ scale: 1.2},
+    const menuTrigger = {
+        visible: { scale: 1, opacity: 0.7, y: 0 },
+        tap: { scale: 0.85 },
+        hover: { scale: 1.2 },
     }
 
-    const menuList ={
-        start :{ scale: 0.6, opacity: 0.7, y: -20 },
-        visible:{ scale: 1, opacity: 0.9, y: 0 },
+    const menuList = {
+        start: { scale: 0.6, opacity: 0.7, y: -20 },
+        visible: { scale: 1, opacity: 0.9, y: 0 },
     }
 
 
@@ -47,22 +42,42 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ links }) => {
             </motion.button>
             <AnimatePresence>
                 {isOpen &&
-                <motion.div
-                variants={menuList}
-                initial="start"
-                animate="visible"
-                 className=" w-full bg-white drop-shadow border border-slate-400
+                    <motion.div
+                        variants={menuList}
+                        initial="start"
+                        animate="visible"
+                        className=" w-full bg-white drop-shadow border border-slate-400
                 dark:border-white border-opacity-60 shadow-2xl flex flex-col
                 items-center justify-center dark:bg-gray-950 p-1">
-                    {links.map((link, index) => (
-                        <div>
-                            <NextLink
-                                href={link.hash}>
-                                {link.nameEng}
-                            </NextLink>
-                        </div>
-                    ))}
-                </motion.div>}
+                        {links.map((link, index) => (
+                            <motion.div
+                                className=" w-full"
+                                key={link.hash}
+                                initial={{ y: -100, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                            >
+                                <NextLink
+                                    className={clsx(
+                                        "flex w-full items-center justify-center px-3 py-3 hover: text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 cursor-pointer  ",
+
+                                        {
+                                            "text-gray-950 bg-slate-200 dark:text-gray-200 dark:bg-gray-7  rounded":
+                                                activeSection === link.hash,
+                                            "rounded-t-xl round ": index === 0,
+                                            "rounded-b-xl round ": index === links.length - 1,
+                                        }
+                                    )}
+                                    href={link.hash}
+                                    onClick={() => {
+                                        setActiveSection(link.hash);
+                                        setTimeOfLastClick(Date.now())
+                                    }}
+                                >
+                                    {link.nameEng}
+                                </NextLink>
+                            </motion.div>
+                        ))}
+                    </motion.div>}
             </AnimatePresence>
         </div>
     )
